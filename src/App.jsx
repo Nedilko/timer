@@ -6,7 +6,6 @@ import { calcDateDuration } from './utils/dateUtils'
 const DEFAULT_TARGET_DATE = { day: 7, hour: 10, minute: 50, second: 15 }
 
 function App() {
-  console.log(calcDateDuration(DEFAULT_TARGET_DATE))
   function handleChange(isOn) {
     if (isOn) {
       document.documentElement.classList.remove('dark')
