@@ -1,6 +1,7 @@
 import dayjs from 'dayjs'
 import objectSupport from 'dayjs/plugin/objectSupport'
 import duration from 'dayjs/plugin/duration'
+import PropTypes from 'prop-types'
 dayjs.extend(objectSupport)
 dayjs.extend(duration)
 
@@ -13,6 +14,10 @@ function calcDateDuration(date) {
   })
 
   return dayjs.duration(dayjs().diff(targetDate))
+}
+
+calcDateDuration.PropTypes = {
+  date: PropTypes.object.isRequired
 }
 
 export { calcDateDuration }

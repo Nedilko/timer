@@ -1,12 +1,10 @@
 import settings from './assets/settings.svg'
 import ToggleSwitch from './components/ToggleSwitch'
 import Countdown from './components/Countdown'
-import { calcDateDuration } from './utils/dateUtils'
 
-const DEFAULT_TARGET_DATE = { day: 7, hour: 10, minute: 50, second: 15 }
+const DEFAULT_TARGET_DATE = { day: 7, hour: 15, minute: 59, second: 15 }
 
 function App() {
-  console.log(calcDateDuration(DEFAULT_TARGET_DATE))
   function handleChange(isOn) {
     if (isOn) {
       document.documentElement.classList.remove('dark')
@@ -34,7 +32,7 @@ function App() {
               <div className="py-5 text-center text-2xl uppercase">
                 time left to weekends
               </div>
-              <Countdown Date={calcDateDuration(DEFAULT_TARGET_DATE)} />
+              <Countdown targetDate={DEFAULT_TARGET_DATE} />
             </div>
           </div>
         </main>
