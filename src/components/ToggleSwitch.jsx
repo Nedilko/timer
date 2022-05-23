@@ -6,22 +6,18 @@ const bgDark = `bg-[url('./assets/dark.svg')]`
 
 function ToggleSwitch({ isToggled, onChange }) {
   const [isOn, setIsOn] = useState(isToggled)
-  const [bgPosition, setBgPosition] = useState('bg-left')
-  const [bgUrl, setBgUrl] = useState(bgLight)
   const toggleHandler = () => {
     setIsOn((oldState) => !oldState)
   }
 
   useEffect(() => {
     onChange(isOn)
-    setBgPosition(isOn ? 'bg-left' : 'bg-right')
-    setBgUrl(isOn ? bgLight : bgDark)
   }, [isOn])
 
   return (
     <span
       onClick={toggleHandler}
-      className={`dark:bg-gray-6ex00 flex h-5 w-9 cursor-pointer appearance-none rounded-full bg-gray-100 ease-linear ${bgPosition} ${bgUrl} bg-contain bg-[length:20px] bg-no-repeat shadow-sm`}
+      className={`dark:bg-gray-6ex00 flex h-5 w-9 cursor-pointer appearance-none rounded-full bg-gray-100 ease-linear ${isOn ? 'bg-left' : 'bg-right'} ${isOn ? bgLight : bgDark} bg-contain bg-[length:20px] bg-no-repeat shadow-sm`}
     >
       <span
         className={`${
