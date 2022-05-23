@@ -1,4 +1,4 @@
-import settings from './assets/settings.svg'
+import settingsIcon from './assets/settings.svg'
 import ToggleSwitch from './components/ToggleSwitch'
 import Countdown from './components/Countdown'
 import { calcDateDuration } from './utils/dateUtils'
@@ -18,7 +18,7 @@ function App() {
       <div className="mx-2 mt-5 flex max-h-[26rem] max-w-lg flex-col rounded-lg bg-gray-200 shadow-xl transition-colors duration-300 dark:bg-gray-800 lg:mx-auto">
         <header className="flex h-10 justify-between">
           <div className="cursor-pointer p-2">
-            <img className="h-5 w-5 dark:invert" src={settings} alt="Settings" />
+            <img className="h-5 w-5 dark:invert" src={settingsIcon} alt="Settings" />
           </div>
           <div className="flex justify-center p-2">
             <ToggleSwitch isToggled={true} onChange={handleChange} />
