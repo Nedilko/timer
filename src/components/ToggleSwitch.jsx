@@ -4,6 +4,11 @@ import PropTypes from 'prop-types'
 const bgLight = `bg-[url('./assets/light.svg')]`
 const bgDark = `bg-[url('./assets/dark.svg')]`
 
+ToggleSwitch.propTypes = {
+  isToggled: PropTypes.bool.isRequired,
+  onChange: PropTypes.func,
+}
+
 function ToggleSwitch({ isToggled, onChange }) {
   const [isOn, setIsOn] = useState(isToggled)
   const toggleHandler = () => {
@@ -27,11 +32,6 @@ function ToggleSwitch({ isToggled, onChange }) {
       ></span>
     </span>
   )
-}
-
-ToggleSwitch.propTypes = {
-  isToggled: PropTypes.bool.isRequired,
-  onChange: PropTypes.func,
 }
 
 export default ToggleSwitch
