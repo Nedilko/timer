@@ -5,12 +5,13 @@ dayjs.extend(objectSupport)
 dayjs.extend(duration)
 
 function calcDateDuration(date) {
-  const targetDate = dayjs().set({
+  date = {
     days: date.day,
     hours: date.hour,
     minutes: date.minute,
     seconds: date.second,
-  })
+  }
+  const targetDate = dayjs().set({...date})
 
   return dayjs.duration(dayjs().diff(targetDate))
 }
