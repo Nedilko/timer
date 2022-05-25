@@ -9,7 +9,7 @@ const TARGET_DATE = {
     days: 15,
     hours: 10,
     minutes: 5,
-    seconds: 0
+    seconds: 1
 }
 
-export { THEME, TARGET_DATE, TOGGLE_SWITCH }
+export { TARGET_DATE, TOGGLE_SWITCH }

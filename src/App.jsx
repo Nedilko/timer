@@ -32,7 +32,7 @@ function App() {
               <div className="py-5 text-center text-2xl uppercase">
                 time left to weekends
               </div>
-              <Countdown Date={calcDateDuration(TARGET_DATE)} />
+              <Countdown Date={TARGET_DATE} />
             </div>
           </div>
         </main>
