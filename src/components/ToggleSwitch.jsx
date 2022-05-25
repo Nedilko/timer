@@ -5,23 +5,14 @@ const bgLight = `bg-[url('./assets/light.svg')]`
 const bgDark = `bg-[url('./assets/dark.svg')]`
 
 ToggleSwitch.propTypes = {
-  isToggled: PropTypes.bool.isRequired,
-  onChange: PropTypes.func,
+  isOn: PropTypes.bool.isRequired,
+  onChange: PropTypes.func.isRequired,
 }
 
-function ToggleSwitch({ isToggled, onChange }) {
-  const [isOn, setIsOn] = useState(isToggled)
-  const toggleHandler = () => {
-    setIsOn((oldState) => !oldState)
-  }
-
-  useEffect(() => {
-    onChange(isOn)
-  }, [isOn])
-
+function ToggleSwitch({ onChange, isOn }) {
   return (
     <span
-      onClick={toggleHandler}
+      onClick={onChange}
       className={`dark:bg-gray-6ex00 flex h-5 w-9 cursor-pointer appearance-none rounded-full bg-gray-100 ease-linear ${isOn ? 'bg-left' : 'bg-right'} ${isOn ? bgLight : bgDark} bg-contain bg-[length:20px] bg-no-repeat shadow-sm`}
     >
       <span

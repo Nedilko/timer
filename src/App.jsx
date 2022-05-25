@@ -1,11 +1,17 @@
 import settingsIcon from './assets/settings.svg'
 import ToggleSwitch from './components/ToggleSwitch'
 import Countdown from './components/Countdown'
-import { calcDateDuration } from './utils/dateUtils'
 import { TARGET_DATE } from './settings'
+import {useState} from "react";
 
 function App() {
-  function handleChange(isOn) {
+    const [isOn, setIsOn] = useState(true)
+    const toggleHandler = () => {
+        setIsOn((oldState) => !oldState)
+        handleThemeChange(!isOn)
+    }
+
+  function handleThemeChange(isOn) {
     if (isOn) {
       document.documentElement.classList.remove('dark')
     } else {
@@ -20,7 +26,7 @@ function App() {
             <img className="h-5 w-5 dark:invert" src={settingsIcon} alt="Settings" />
           </div>
           <div className="flex justify-center p-2">
-            <ToggleSwitch isToggled={true} onChange={handleChange} />
+            <ToggleSwitch onChange={toggleHandler} isOn={isOn} />
           </div>
         </header>
         <main className="mb-auto bg-gray-200 py-4 transition-colors duration-300 dark:bg-gray-800 dark:text-cyan-50">
