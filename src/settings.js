@@ -6,9 +6,9 @@ const TOGGLE_SWITCH = {
 }
 
 const TARGET_DATE = {
-    days: 15,
-    hours: 10,
-    minutes: 5,
+    days: 7,
+    hours: 22,
+    minutes: 50,
     seconds: 1
 }
 

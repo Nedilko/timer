@@ -4,16 +4,23 @@ import duration from 'dayjs/plugin/duration'
 dayjs.extend(objectSupport)
 dayjs.extend(duration)
 
-function calcDateDuration(date) {
-  date = {
-    days: date.day,
-    hours: date.hour,
-    minutes: date.minute,
-    seconds: date.second,
+function calcDateDuration(targetDate) {
+  const date = {
+    days: targetDate.days,
+    hours: targetDate.hours,
+    minutes: targetDate.minutes,
+    seconds: targetDate.seconds,
   }
-  const targetDate = dayjs().set({...date})
+  const targetDateObj = dayjs().set({...date})
 
-  return dayjs.duration(dayjs().diff(targetDate))
+  const duration = dayjs.duration(dayjs().diff(targetDateObj))
+
+  return {
+    days:  Math.abs(duration.days()),
+    hours: Math.abs(duration.hours()),
+    minutes: Math.abs(duration.minutes()),
+    seconds: Math.abs(duration.seconds()),
+  }
 }
 
 export { calcDateDuration }
