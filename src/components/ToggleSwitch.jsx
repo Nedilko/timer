@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import PropTypes from 'prop-types'
 
 const bgLight = `bg-[url('./assets/light.svg')]`
@@ -9,7 +9,7 @@ ToggleSwitch.propTypes = {
   onChange: PropTypes.func.isRequired,
 }
 
-function ToggleSwitch({ onChange, isOn }) {
+function ToggleSwitch({onChange, isOn}) {
   return (
     <span
       onClick={onChange}
