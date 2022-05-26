@@ -1,8 +1,8 @@
 import settingsIcon from './assets/settings.svg'
 import ToggleSwitch from './components/ToggleSwitch'
 import Countdown from './components/Countdown'
-import { TARGET_DATE } from './settings'
-import {useState} from "react";
+import {TARGET_DATE} from './settings'
+import React, { useState }  from 'react';
 
 function App() {
     const [isOn, setIsOn] = useState(true)
@@ -43,7 +43,7 @@ function App() {
           </div>
         </main>
         <footer className="p-2 text-center dark:text-cyan-50">
-          <a href="#">some link</a>
+          <small>Developed by Andrii Haranin</small>
         </footer>
       </div>
   )
