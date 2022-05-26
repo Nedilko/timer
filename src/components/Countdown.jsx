@@ -1,10 +1,13 @@
-import { useState } from 'react'
+import React, { useState }  from 'react';
 import { calcDateDuration } from '../utils/dateUtils'
+import PropTypes from 'prop-types'
+
+Countdown.propTypes = {
+  targetDate: PropTypes.object.isRequired,
+}
 
 function Countdown({ targetDate }) {
   const [timeLeft, setTimeLeft] = useState(calcDateDuration(targetDate))
-
-    console.log(calcDateDuration(targetDate))
 
   return (
     <div className="grid grid-cols-4 flex-row flex-wrap items-end justify-around px-10 text-center uppercase">
