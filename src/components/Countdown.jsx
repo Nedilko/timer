@@ -1,4 +1,4 @@
-import React, { useState }  from 'react';
+import React, { useState, useEffect }  from 'react';
 import { calcDateDuration } from '../utils/dateUtils'
 import PropTypes from 'prop-types'
 
@@ -8,6 +8,16 @@ Countdown.propTypes = {
 
 function Countdown({ targetDate }) {
   const [timeLeft, setTimeLeft] = useState(calcDateDuration(targetDate))
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setTimeLeft((oldState) => calcDateDuration(targetDate))
+    }, 1000)
+
+    return () => {
+      clearTimeout(timerId)
+    }
+  }, [timeLeft])
 
   return (
     <div className="grid grid-cols-4 flex-row flex-wrap items-end justify-around px-10 text-center uppercase">
