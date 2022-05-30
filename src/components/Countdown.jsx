@@ -17,7 +17,7 @@ function Countdown({ targetDate }) {
     return () => {
       clearTimeout(timerId)
     }
-  }, [timeLeft])
+  }, [timeLeft,targetDate])
 
   return (
     <div className="grid grid-cols-4 flex-row flex-wrap items-end justify-around px-10 text-center uppercase">
