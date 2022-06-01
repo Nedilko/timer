@@ -1,5 +1,5 @@
 import settingsIcon from './assets/settings.svg'
-import ToggleSwitch from './components/ToggleSwitch'
+import ThemeToggleSwitch from './components/ThemeToggleSwitch'
 import Countdown from './components/Countdown'
 import {TARGET_DATE} from './settings'
 import React, { useState }  from 'react';
@@ -26,7 +26,7 @@ function App() {
             <img className="h-5 w-5 dark:invert" src={settingsIcon} alt="Settings" />
           </div>
           <div className="flex justify-center p-2">
-            <ToggleSwitch onChange={toggleHandler} isOn={isOn} />
+            <ThemeToggleSwitch/>
           </div>
         </header>
         <main className="mb-auto bg-gray-200 py-4 transition-colors duration-300 dark:bg-gray-800 dark:text-cyan-50">
