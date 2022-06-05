@@ -3,6 +3,7 @@ import ToggleSwitch from './components/ToggleSwitch'
 import Countdown from './components/Countdown'
 import {TARGET_DATE} from './settings'
 import React, { useState }  from 'react';
+import Modal from './components/Modal'
 
 function App() {
     const [isOn, setIsOn] = useState(true)
@@ -45,6 +46,7 @@ function App() {
         <footer className="p-2 text-center dark:text-cyan-50">
           <small>Developed by Andrii Haranin</small>
         </footer>
+        <Modal/>
       </div>
   )
 }

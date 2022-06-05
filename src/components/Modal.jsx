@@ -1,15 +1,15 @@
 import React from 'react';
+import Panel from './Panel'
 
 function Modal() {
   return (
-    <div className='absolute backdrop-blur-sm w-full h-full flex items-center justify-center rounded-xl'>
-      <div className='bg-gray-300 rounded-xl shadow-xl p-2'>
-        <header className='border-b border-gray-500 text-xl py-2'>Settings</header>
-        <main className='flex flex-col py-2'>
+    <Panel>
+      <header className='border-b border-gray-500 text-xl py-2'>Settings</header>
+      <main className='flex flex-col py-2'>
           <span className='py-2'>Greetings text
             <input className='mx-1 px-1 rounded bg-gray-200' type="text" placeholder="put some text here"/>
           </span>
-          <span>
+        <span>
             <span className='py-2'>Day
               <select className="rounded mx-1" name="" id="">
                 <option value="1">Monday</option>
@@ -26,14 +26,13 @@ function Modal() {
               </select>
             </span>
           </span>
-          <span className='py-2'>Use system theme</span>
-        </main>
-        <footer className='flex border-t border-gray-500 justify-end  py-2'>
-          <span className='px-2'>Apply</span>
-          <span className='px-2'>Cancel</span>
-        </footer>
-      </div>
-    </div>
+        <span className='py-2'>Use system theme</span>
+      </main>
+      <footer className='flex border-t border-gray-500 justify-end  py-2'>
+        <span className='px-2'>Apply</span>
+        <span className='px-2'>Cancel</span>
+      </footer>
+    </Panel>
   )
 }
 
