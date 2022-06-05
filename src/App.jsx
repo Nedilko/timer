@@ -5,20 +5,6 @@ import {TARGET_DATE} from './settings'
 import React, { useState }  from 'react';
 
 function App() {
-    const [isOn, setIsOn] = useState(true)
-    const toggleHandler = () => {
-        setIsOn((oldState) => !oldState)
-        handleThemeChange(!isOn)
-    }
-
-  function handleThemeChange(isOn) {
-    if (isOn) {
-      document.documentElement.classList.remove('dark')
-    } else {
-      document.documentElement.classList.add('dark')
-    }
-  }
-
   return (
       <div className="mx-2 mt-5 flex max-h-[26rem] max-w-lg flex-col rounded-lg bg-gray-200 shadow-xl transition-colors duration-300 dark:bg-gray-800 lg:mx-auto">
         <header className="flex h-10 justify-between">
