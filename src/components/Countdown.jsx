@@ -1,4 +1,3 @@
-import React, { useState, useEffect }  from 'react';
 import { calcDateDuration } from '../utils/dateUtils'
 import PropTypes from 'prop-types'
 
