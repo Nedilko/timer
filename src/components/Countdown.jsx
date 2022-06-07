@@ -1,5 +1,6 @@
 import { calcDateDuration } from '../utils/dateUtils'
 import PropTypes from 'prop-types'
+import {useEffect, useState} from 'react'
 
 Countdown.propTypes = {
   targetDate: PropTypes.object.isRequired,
