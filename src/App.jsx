@@ -1,17 +1,17 @@
-import settingsIcon from './assets/settings.svg'
+import React, {useState} from 'react';
 import ThemeToggleSwitch from './components/ThemeToggleSwitch'
 import Countdown from './components/Countdown'
-import {DEFAULT_SETTINGS, TARGET_DATE} from './settings'
-import {loadSettings, saveSettings} from './utils/storageUtils'
-import React, {useState, useContext, useEffect} from 'react';
+import {TARGET_DATE} from './settings'
+import Modal from './components/Modal'
+import Panel from './components/Panel'
 
-const GlobalSettingsContext = React.createContext(DEFAULT_SETTINGS)
+import settingsIcon from './assets/settings.svg'
 
 function App() {
   return (
-    <GlobalSettingsContext.Provider value={DEFAULT_SETTINGS}>
+    <div className="flex w-full h-screen bg-gray-200">
       <div
-        className="mx-2 mt-5 flex max-h-[26rem] max-w-lg flex-col rounded-lg bg-gray-200 shadow-xl transition-colors duration-300 dark:bg-gray-800 lg:mx-auto">
+        className="mx-2 mt-5 flex max-h-[26rem] max-w-lg flex-col transition-colors duration-300 dark:bg-gray-800 lg:mx-auto relative">
         <header className="flex h-10 justify-between">
           <div className="cursor-pointer p-2">
             <img className="h-5 w-5 dark:invert" src={settingsIcon} alt="Settings"/>
@@ -36,8 +36,9 @@ function App() {
         <footer className="p-2 text-center dark:text-cyan-50">
           <small>Developed by Andrii Haranin</small>
         </footer>
+        <Modal/>
       </div>
-    </GlobalSettingsContext.Provider>
+    </div>
   )
 }
 
