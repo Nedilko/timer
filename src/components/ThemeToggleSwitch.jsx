@@ -1,15 +1,36 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import ToggleSwitch from './ToggleSwitch'
+import {getItem, setItem} from '../utils/storageUtils'
+import {DEFAULT_SETTINGS} from '../settings'
+
+function getTheme() {
+  const theme = getItem('theme')
+
+  if (theme) {
+    return theme
+  } else {
+    return DEFAULT_SETTINGS.theme
+  }
+}
 
 function ThemeToggleSwitch() {
-  const [isOn, setIsOn] = useState(true)
+  const [isLight, setIsLight] = useState(getTheme())
   const toggleHandler = () => {
-    setIsOn((oldState) => !oldState)
-    handleThemeChange(!isOn)
+    setIsLight((oldState) => !oldState)
+    handleThemeChange(!isLight)
   }
 
-  function handleThemeChange(isOn) {
-    if (isOn) {
+  useEffect(() => {
+    applyTheme(isLight)
+  }, [])
+
+  function handleThemeChange(isLight) {
+    applyTheme(isLight)
+    setItem('theme', isLight)
+  }
+
+  function applyTheme(isLight) {
+    if (isLight) {
       document.documentElement.classList.remove('dark')
     } else {
       document.documentElement.classList.add('dark')
@@ -17,7 +38,7 @@ function ThemeToggleSwitch() {
   }
 
   return (
-    <ToggleSwitch onChange={toggleHandler} isOn={isOn} />
+    <ToggleSwitch onChange={toggleHandler} isOn={isLight}/>
   )
 }
 

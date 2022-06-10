@@ -1,13 +1,15 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import ThemeToggleSwitch from './components/ThemeToggleSwitch'
 import Countdown from './components/Countdown'
-import {TARGET_DATE} from './settings'
+import {DEFAULT_SETTINGS} from './settings'
 import Modal from './components/Modal'
 import Panel from './components/Panel'
 
 import settingsIcon from './assets/settings.svg'
 
 function App() {
+  const [GlobalSettings, setGlobalSettings] = useState(DEFAULT_SETTINGS)
+
   return (
     <div className="flex w-full h-screen bg-gray-200">
       <div
@@ -29,14 +31,13 @@ function App() {
               <div className="py-5 text-center text-2xl uppercase">
                 time left to weekends
               </div>
-              <Countdown targetDate={TARGET_DATE}/>
+              <Countdown targetDate={GlobalSettings.targetDate}/>
             </div>
           </div>
         </main>
         <footer className="p-2 text-center dark:text-cyan-50">
           <small>Developed by Andrii Haranin</small>
         </footer>
-        <Modal/>
       </div>
     </div>
   )

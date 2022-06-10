@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useContext }  from 'react';
-import { calcDateDuration } from '../utils/dateUtils'
+import {useState, useEffect, useContext} from 'react';
+import {calcDateDuration} from '../utils/dateUtils'
 import PropTypes from 'prop-types'
 
 Countdown.propTypes = {
   targetDate: PropTypes.object.isRequired,
 }
 
-function Countdown({ targetDate }) {
+function Countdown({targetDate}) {
   const [timeLeft, setTimeLeft] = useState(calcDateDuration(targetDate))
 
   useEffect(() => {
@@ -17,19 +17,22 @@ function Countdown({ targetDate }) {
     return () => {
       clearTimeout(timerId)
     }
-  }, [timeLeft,targetDate])
+  }, [timeLeft, targetDate])
 
   return (
     <div className="grid grid-cols-4 flex-row flex-wrap items-end justify-around px-10 text-center uppercase">
-      <div className="after:absolute after:text-2xl after:content-[':'] after:absolute after:right-0 after:bottom-0 relative">
+      <div
+        className="after:absolute after:text-2xl after:content-[':'] after:absolute after:right-0 after:bottom-0 relative">
         <div>days</div>
         <div className="text-2xl">{timeLeft.days}</div>
       </div>
-      <div className="after:absolute after:text-2xl after:content-[':'] after:absolute after:right-0 after:bottom-0 relative">
+      <div
+        className="after:absolute after:text-2xl after:content-[':'] after:absolute after:right-0 after:bottom-0 relative">
         <div>hours</div>
         <div className="text-2xl">{timeLeft.hours}</div>
       </div>
-      <div className="after:absolute after:text-2xl after:content-[':'] after:absolute after:right-0 after:bottom-0 relative">
+      <div
+        className="after:absolute after:text-2xl after:content-[':'] after:absolute after:right-0 after:bottom-0 relative">
         <div>minutes</div>
         <div className="text-2xl">{timeLeft.minutes}</div>
       </div>

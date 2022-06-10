@@ -1,9 +1,17 @@
-function saveSettings({settings}) {
-  return localStorage.setItem('timerSettings', btoa(JSON.stringify(settings)))
+function setItem(key, value) {
+  return localStorage.setItem(key, btoa(JSON.stringify(value)))
 }
 
-function loadSettings() {
-  return JSON.parse(atob(localStorage.getItem('timerSettings')))
+function getItem(key) {
+  return JSON.parse(decode(localStorage.getItem(key)))
 }
 
-export {saveSettings, loadSettings}
+function decode(encodedString) {
+  try {
+    return atob(encodedString)
+  } catch (e) {
+    return null
+  }
+}
+
+export {setItem, getItem}
