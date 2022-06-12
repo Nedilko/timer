@@ -5,7 +5,7 @@ const TOGGLE_SWITCH = {
   }
 }
 
-const DEFAULT_SETTINGS = {
+const getDefaultSettings = () => ({
   greetingsText: "have a beer!",
   targetDate: {
     days: 5,
@@ -16,6 +16,6 @@ const DEFAULT_SETTINGS = {
   theme: true,
   useSystemTheme: false,
   isFirstLoad: true,
-}
+})
 
-export {TOGGLE_SWITCH, DEFAULT_SETTINGS}
+export {TOGGLE_SWITCH, getDefaultSettings}

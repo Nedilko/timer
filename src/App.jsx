@@ -1,45 +1,47 @@
 import {useState} from 'react';
+import {getDefaultSettings} from './settings'
+import {loadSettings} from './utils/storageAdapter'
+import SettingsContext from './components/settingsContext'
 import ThemeToggleSwitch from './components/ThemeToggleSwitch'
 import Countdown from './components/Countdown'
-import {DEFAULT_SETTINGS} from './settings'
-import Modal from './components/Modal'
 import Panel from './components/Panel'
-
 import settingsIcon from './assets/settings.svg'
 
 function App() {
-  const [GlobalSettings, setGlobalSettings] = useState(DEFAULT_SETTINGS)
+  const [GlobalSettings, setGlobalSettings] = useState(loadSettings())
 
   return (
-    <div className="flex w-full h-screen bg-gray-200">
-      <div
-        className="mx-2 mt-5 flex max-h-[26rem] max-w-lg flex-col transition-colors duration-300 dark:bg-gray-800 lg:mx-auto relative">
-        <header className="flex h-10 justify-between">
-          <div className="cursor-pointer p-2">
-            <img className="h-5 w-5 dark:invert" src={settingsIcon} alt="Settings"/>
-          </div>
-          <div className="flex justify-center p-2">
-            <ThemeToggleSwitch/>
-          </div>
-        </header>
-        <main className="mb-auto bg-gray-200 py-4 transition-colors duration-300 dark:bg-gray-800 dark:text-cyan-50">
-          <div className="flex flex-col">
-            <div className="py-8 text-center text-3xl uppercase">
-              weekends countdown
+    <SettingsContext.Provider value={{GlobalSettings, setGlobalSettings}}>
+      <div className="flex w-full h-screen bg-gray-200">
+        <div
+          className="mx-2 mt-5 flex max-h-[26rem] max-w-lg flex-col transition-colors duration-300 dark:bg-gray-800 lg:mx-auto relative">
+          <header className="flex h-10 justify-between">
+            <div className="cursor-pointer p-2">
+              <img className="h-5 w-5 dark:invert" src={settingsIcon} alt="Settings"/>
             </div>
-            <div>
-              <div className="py-5 text-center text-2xl uppercase">
-                time left to weekends
+            <div className="flex justify-center p-2">
+              <ThemeToggleSwitch/>
+            </div>
+          </header>
+          <main className="mb-auto bg-gray-200 py-4 transition-colors duration-300 dark:bg-gray-800 dark:text-cyan-50">
+            <div className="flex flex-col">
+              <div className="py-8 text-center text-3xl uppercase">
+                weekends countdown
               </div>
-              <Countdown targetDate={GlobalSettings.targetDate}/>
+              <div>
+                <div className="py-5 text-center text-2xl uppercase">
+                  time left to weekends
+                </div>
+                <Countdown targetDate={GlobalSettings.targetDate}/>
+              </div>
             </div>
-          </div>
-        </main>
-        <footer className="p-2 text-center dark:text-cyan-50">
-          <small>Developed by Andrii Haranin</small>
-        </footer>
+          </main>
+          <footer className="p-2 text-center dark:text-cyan-50">
+            <small>Developed by Andrii Haranin</small>
+          </footer>
+        </div>
       </div>
-    </div>
+    </SettingsContext.Provider>
   )
 }
 

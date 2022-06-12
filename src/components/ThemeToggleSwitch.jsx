@@ -1,35 +1,30 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useContext} from 'react'
 import ToggleSwitch from './ToggleSwitch'
-import {getItem, setItem} from '../utils/storageUtils'
-import {DEFAULT_SETTINGS} from '../settings'
-
-function getTheme() {
-  const theme = getItem('theme')
-
-  if (theme) {
-    return theme
-  } else {
-    return DEFAULT_SETTINGS.theme
-  }
-}
+import SettingsContext from './settingsContext'
+import {writeSettings} from '../utils/storageAdapter'
 
 function ThemeToggleSwitch() {
-  const [isLight, setIsLight] = useState(getTheme())
+  const {GlobalSettings, setGlobalSettings} = useContext(SettingsContext)
+  const [isLight, setIsLight] = useState(GlobalSettings.theme)
+
   const toggleHandler = () => {
     setIsLight((oldState) => !oldState)
     handleThemeChange(!isLight)
   }
 
   useEffect(() => {
-    applyTheme(isLight)
+    applyTheme(GlobalSettings.theme)
   }, [])
 
-  function handleThemeChange(isLight) {
+  const handleThemeChange = (isLight) => {
     applyTheme(isLight)
-    setItem('theme', isLight)
+    writeSettings({
+      ...GlobalSettings,
+      theme: isLight
+    })
   }
 
-  function applyTheme(isLight) {
+  const applyTheme = (isLight) => {
     if (isLight) {
       document.documentElement.classList.remove('dark')
     } else {
@@ -38,7 +33,7 @@ function ThemeToggleSwitch() {
   }
 
   return (
-    <ToggleSwitch onChange={toggleHandler} isOn={isLight}/>
+    <ToggleSwitch onChange={toggleHandler} isOn={GlobalSettings.theme}/>
   )
 }
 
