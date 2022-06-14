@@ -5,20 +5,20 @@ import SettingsContext from './components/settingsContext'
 import ThemeToggleSwitch from './components/ThemeToggleSwitch'
 import Countdown from './components/Countdown'
 import Panel from './components/Panel'
-import settingsIcon from './assets/settings.svg'
+import Button from './components/Button'
+import SettingsButton from './components/SettingsButton'
+import SettingsModal from './components/SettingsModal'
 
 function App() {
   const [GlobalSettings, setGlobalSettings] = useState(loadSettings())
 
   return (
     <SettingsContext.Provider value={{GlobalSettings, setGlobalSettings}}>
-      <div className="flex w-full h-screen bg-gray-200">
+      <div className="flex w-full h-screen bg-gray-200 dark:bg-gray-800 transition-colors duration-300">
         <div
-          className="mx-2 mt-5 flex max-h-[26rem] max-w-lg flex-col transition-colors duration-300 dark:bg-gray-800 lg:mx-auto relative">
+          className="mx-2 mt-5 flex max-h-[26rem] max-w-lg flex-col transition-colors duration-300 lg:mx-auto relative">
           <header className="flex h-10 justify-between">
-            <div className="cursor-pointer p-2">
-              <img className="h-5 w-5 dark:invert" src={settingsIcon} alt="Settings"/>
-            </div>
+            <SettingsButton/>
             <div className="flex justify-center p-2">
               <ThemeToggleSwitch/>
             </div>
@@ -41,6 +41,7 @@ function App() {
           </footer>
         </div>
       </div>
+      <SettingsModal/>
     </SettingsContext.Provider>
   )
 }

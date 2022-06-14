@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 
 Panel.propTypes = {
-  children: PropTypes.array.isRequired,
+  children: PropTypes.array,
 }
 
 function Panel({children}) {
