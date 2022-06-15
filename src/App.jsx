@@ -11,6 +11,11 @@ import SettingsModal from './components/SettingsModal'
 
 function App() {
   const [GlobalSettings, setGlobalSettings] = useState(loadSettings())
+  const [isOpen, setIsOpen] = useState(false)
+
+  const handleModalOpenClose = () => {
+    setIsOpen((oldState) => !oldState)
+  }
 
   return (
     <SettingsContext.Provider value={{GlobalSettings, setGlobalSettings}}>
@@ -18,7 +23,7 @@ function App() {
         <div
           className="mx-2 mt-5 flex max-h-[26rem] max-w-lg flex-col transition-colors duration-300 lg:mx-auto relative">
           <header className="flex h-10 justify-between">
-            <SettingsButton/>
+            <SettingsButton onClick={handleModalOpenClose}/>
             <div className="flex justify-center p-2">
               <ThemeToggleSwitch/>
             </div>
@@ -41,7 +46,7 @@ function App() {
           </footer>
         </div>
       </div>
-      <SettingsModal/>
+      <SettingsModal isOpen={isOpen} onCancel={handleModalOpenClose}/>
     </SettingsContext.Provider>
   )
 }

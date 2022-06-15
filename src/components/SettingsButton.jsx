@@ -1,12 +1,14 @@
+import PropTypes from 'prop-types'
 import Button from './Button'
+import settingsIcon from '../assets/settings.svg'
 
-const SettingsButton = () => {
-  const handleClick = () => {
-    console.log('Click click...')
-  }
+SettingsButton.propTypes = {
+  onClick: PropTypes.func.isRequired
+}
 
+function SettingsButton({onClick}) {
   return (
-    <Button onClick={handleClick}/>
+    <Button icon={settingsIcon} onClick={onClick}/>
   )
 }
 

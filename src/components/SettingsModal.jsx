@@ -1,35 +1,40 @@
+import {useState} from 'react'
 import Modal from './Modal'
+import Button from './Button'
+import Select from './Select'
+import Input from './Input'
+import {settingsData} from '../settings'
+import PropTypes from 'prop-types'
 
-function SettingsModal() {
+SettingsModal.propTypes = {
+  isOpen: PropTypes.bool,
+  onCancel: PropTypes.func,
+  onApply: PropTypes.func
+}
+
+function SettingsModal({isOpen, onCancel, onApply}) {
+  function handleApply() {
+    console.log('applied settings and closed')
+  }
+
+  function handleClose() {
+    console.log('closed modal')
+  }
+
   return (
-    <Modal>
+    <Modal isOpen={isOpen}>
       <div className='border-b border-gray-500 text-xl py-2'>Settings</div>
       <div className='flex flex-col py-2'>
-          <span className='py-2'>Greetings text
-            <input className='mx-1 px-1 rounded bg-gray-200' type="text" placeholder="put some text here"/>
-          </span>
-        <div>
-          <div className='py-2'>Day
-            <select className="rounded mx-1" name="" id="">
-              <option value="1">Monday</option>
-              <option value="2">Tuesday</option>
-              <option value="3">Wednesday</option>
-            </select>
-          </div>
-
-          <div className='py-2'>Hour
-            <select className="rounded mx-1" name="" id="">
-              <option value="0">00:00</option>
-              <option value="1">01:00</option>
-              <option value="23">23:00</option>
-            </select>
-          </div>
+        <Input label="Greetings text"/>
+        <div className='flex flex-col'>
+          <Select options={settingsData.days} label={'Day'}/>
+          <Select options={settingsData.hours} label={'Hour'}/>
         </div>
-        <div className='py-2'>Use system theme</div>
+        <label className='py-2'>Use system theme</label>
       </div>
       <footer className='flex border-t border-gray-500 justify-end  py-2'>
-        <span className='px-2'>Apply</span>
-        <span className='px-2'>Cancel</span>
+        <Button title={'Apply'} onClick={onApply}/>
+        <Button title={'Cancel'} onClick={onCancel}/>
       </footer>
     </Modal>
   )
