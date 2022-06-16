@@ -1,25 +1,33 @@
-import {useEffect} from 'react'
+import {useEffect, useRef} from 'react'
+import {createPortal} from 'react-dom'
 import Panel from './Panel'
-import Portal from './Portal'
 import OverlayBackground from './OverlayBackground'
 import PropTypes from 'prop-types'
 
 Modal.propTypes = {
   children: PropTypes.any.isRequired,
-  isOpen: PropTypes.bool.isRequired,
 }
 
-function Modal({children, isOpen}) {
-  if (!isOpen) return null;
+function Modal({children}) {
+  const element = useRef(document.createElement('div'))
+  useEffect(() => {
+    const modalPortal = document.getElementById('modal-portal')
+    const currentElement = element.current
 
-  return (
-    <Portal wrapperId='portal-wrapper'>
-      <OverlayBackground>
-        <Panel>
-          {children}
-        </Panel>
-      </OverlayBackground>
-    </Portal>
+    modalPortal.appendChild(currentElement)
+
+    return () => {
+      modalPortal.removeChild(currentElement)
+    }
+  }, [])
+
+  return createPortal(
+    <OverlayBackground>
+      <Panel>
+        {children}
+      </Panel>
+    </OverlayBackground>,
+    element.current
   )
 }
 

@@ -4,10 +4,9 @@ import {loadSettings} from './utils/storageAdapter'
 import SettingsContext from './components/settingsContext'
 import ThemeToggleSwitch from './components/ThemeToggleSwitch'
 import Countdown from './components/Countdown'
-import Panel from './components/Panel'
-import Button from './components/Button'
-import SettingsButton from './components/SettingsButton'
+import Icon from './components/Icon'
 import SettingsModal from './components/SettingsModal'
+import settingsIcon from './assets/settings.svg'
 
 function App() {
   const [GlobalSettings, setGlobalSettings] = useState(loadSettings())
@@ -23,7 +22,10 @@ function App() {
         <div
           className="mx-2 mt-5 flex max-h-[26rem] max-w-lg flex-col transition-colors duration-300 lg:mx-auto relative">
           <header className="flex h-10 justify-between">
-            <SettingsButton onClick={handleModalOpenClose}/>
+            <Icon icon={settingsIcon} onClick={handleModalOpenClose}/>
+            {isModalOpen && (
+              <SettingsModal isOpen={isModalOpen} onApply={()=> console.log('applied')} onCancel={handleModalOpenClose}/>
+            )}
             <div className="flex justify-center p-2">
               <ThemeToggleSwitch/>
             </div>

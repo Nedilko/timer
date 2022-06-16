@@ -1,34 +1,35 @@
-import {useState} from 'react'
+import {useRef, useState} from 'react'
+import PropTypes from 'prop-types'
 import Modal from './Modal'
 import Button from './Button'
 import Select from './Select'
 import Input from './Input'
 import {settingsData} from '../settings'
-import PropTypes from 'prop-types'
+import {loadSettings} from '../utils/storageAdapter'
 
 SettingsModal.propTypes = {
-  isOpen: PropTypes.bool,
-  onCancel: PropTypes.func,
-  onApply: PropTypes.func
+  onCancel: PropTypes.func.isRequired,
+  onApply: PropTypes.func.isRequired
 }
 
-function SettingsModal({isOpen, onCancel, onApply}) {
-  function handleApply() {
-    console.log('applied settings and closed')
-  }
+function SettingsModal({onCancel, onApply}) {
+  const [settings, setSettings] = useState(loadSettings)
+  const ref = useRef()
 
-  function handleClose() {
-    console.log('closed modal')
+  const handleClick = () => {
+    if (ref.current && !ref.current.contains(e.target)) {
+      console.log('click outside')
+    }
   }
 
   return (
-    <Modal isOpen={isOpen}>
+    <Modal onClick={handleClick}>
       <div className='border-b border-gray-500 text-xl py-2'>Settings</div>
       <div className='flex flex-col py-2'>
         <Input label="Greetings text"/>
         <div className='flex flex-col'>
-          <Select options={settingsData.days} label={'Day'}/>
-          <Select options={settingsData.hours} label={'Hour'}/>
+          <Select selected={settings.targetDate.days} options={settingsData.days} label={'Day'}/>
+          <Select selected={settings.targetDate.hours} options={settingsData.hours} label={'Hour'}/>
         </div>
         <label className='py-2'>Use system theme</label>
       </div>
