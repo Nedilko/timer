@@ -28,21 +28,16 @@ const settingsData = {
     'Saturday',
     'Sunday'
   ],
-  hours: [
-    '00:00',
-    '01:00',
-    '02:00',
-    '03:00',
-    '04:00',
-    '05:00',
-    '06:00',
-    '07:00',
-    '08:00',
-    '09:00',
-    '10:00',
-    '11:00',
-    '12:00',
-  ]
+  hours: (() => {
+    const nums = [...Array(24).keys()]
+    const fnum = []
+
+    for (let num in nums) {
+      fnum.push(parseInt(num).toLocaleString('en-US', {minimumIntegerDigits: 2}) + ':00')
+    }
+
+    return fnum
+  })()
 }
 
 export {TOGGLE_SWITCH, getDefaultSettings, settingsData}

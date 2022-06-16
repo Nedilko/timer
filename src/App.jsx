@@ -10,15 +10,16 @@ import settingsIcon from './assets/settings.svg'
 
 function App() {
   const [GlobalSettings, setGlobalSettings] = useState(loadSettings())
-  const [isOpen, setIsOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const handleModalOpenClose = () => {
-    setIsOpen((oldState) => !oldState)
+    setIsModalOpen((oldState) => !oldState)
   }
 
   return (
     <SettingsContext.Provider value={{GlobalSettings, setGlobalSettings}}>
-      <div className="flex w-full h-screen bg-gray-200 dark:bg-gray-800 transition-colors duration-300">
+      <div
+        className="flex w-full h-screen bg-gray-200 dark:bg-gray-800 transition-colors duration-300 justify-center items-center">
         <div
           className="mx-2 mt-5 flex max-h-[26rem] max-w-lg flex-col transition-colors duration-300 lg:mx-auto relative">
           <header className="flex h-10 justify-between">
@@ -48,7 +49,6 @@ function App() {
           </footer>
         </div>
       </div>
-      <SettingsModal isOpen={isOpen} onCancel={handleModalOpenClose}/>
     </SettingsContext.Provider>
   )
 }
