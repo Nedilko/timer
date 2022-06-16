@@ -7,9 +7,14 @@ Input.propTypes = {
 }
 
 function Input({label, placeholder = 'Greetings text'}) {
+  const [value, setValue] = useState('')
+  const handleChange = () => {
+    setValue(event.target.value)
+  }
+
   return (
     <label className='py-2'>{label}
-      <input className='mx-1 px-1 rounded bg-gray-200' type="text" placeholder={placeholder}/>
+      <input onChange={handleChange} className='mx-1 px-1 rounded bg-gray-200' type="text" placeholder={placeholder}/>
     </label>
   )
 }
