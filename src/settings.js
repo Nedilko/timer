@@ -33,7 +33,8 @@ const settingsData = {
     const fnum = []
 
     for (let num in nums) {
-      fnum.push(parseInt(num).toLocaleString('en-US', {minimumIntegerDigits: 2}) + ':00')
+      const timeString = parseInt(num).toLocaleString('en-US', {minimumIntegerDigits: 2})
+      fnum.push(`${timeString}:00`)
     }
 
     return fnum
