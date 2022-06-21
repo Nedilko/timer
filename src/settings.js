@@ -6,17 +6,17 @@ const TOGGLE_SWITCH = {
 }
 
 const getDefaultSettings = () => ({
-  greetingsText: "have a beer!",
+  greetingsText: 'have a beer!',
   targetDate: {
     days: 5,
     hours: 18,
     minutes: 0,
-    seconds: 0
+    seconds: 0,
   },
-  theme: true,
+  theme: 'light',
   useSystemTheme: false,
   isFirstLoad: true,
-})
+});
 
 const settingsData = {
   days: [

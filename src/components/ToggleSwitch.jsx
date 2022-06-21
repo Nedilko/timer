@@ -1,24 +1,28 @@
-import {useEffect, useState} from 'react'
-import PropTypes from 'prop-types'
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 
-const bgLight = `bg-[url('./assets/light.svg')]`
-const bgDark = `bg-[url('./assets/dark.svg')]`
+const bgLight = `bg-[url('./assets/light.svg')]`;
+const bgDark = `bg-[url('./assets/dark.svg')]`;
 
 ToggleSwitch.propTypes = {
   isOn: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
-}
+};
 
-function ToggleSwitch({onChange, isOn}) {
-  const [toggleOn, setToggleOn] = useState(isOn)
+function ToggleSwitch({ onChange, isOn }) {
+  const [toggleOn, setToggleOn] = useState(isOn);
   const handleClick = () => {
-    setToggleOn((oldState) => !oldState)
-    onChange()
-  }
+    setToggleOn((oldState) => !oldState);
+    onChange();
+  };
   return (
     <span
       onClick={handleClick}
-      className={`dark:bg-gray-6ex00 flex h-5 w-9 cursor-pointer appearance-none rounded-full bg-gray-100 ease-linear ${toggleOn ? 'bg-left' : 'bg-right'} ${toggleOn ? bgLight : bgDark} bg-contain bg-[length:20px] bg-no-repeat shadow-sm`}
+      className={`dark:bg-gray-6ex00 flex h-5 w-9 cursor-pointer appearance-none rounded-full bg-gray-100 ease-linear ${
+        toggleOn ? 'bg-left' : 'bg-right'
+      } ${
+        toggleOn ? bgLight : bgDark
+      } bg-contain bg-[length:20px] bg-no-repeat shadow-sm`}
     >
       <span
         className={`${
@@ -27,7 +31,7 @@ function ToggleSwitch({onChange, isOn}) {
       transition duration-75 ease-linear dark:bg-gray-700`}
       ></span>
     </span>
-  )
+  );
 }
 
-export default ToggleSwitch
+export default ToggleSwitch;
