@@ -2,8 +2,8 @@ import { useEffect, useContext } from 'react';
 import ToggleSwitch from './ToggleSwitch';
 import SettingsContext from '../state/Settings';
 
-const applyTheme = (isDark) => {
-  if (isDark) {
+const applyTheme = (light) => {
+  if (light) {
     document.documentElement.classList.remove('dark');
   } else {
     document.documentElement.classList.add('dark');
@@ -20,7 +20,7 @@ function ThemeToggleSwitch() {
   };
 
   useEffect(() => {
-    applyTheme(settings.theme === 'dark');
+    applyTheme(settings.theme === 'light');
   }, [settings.theme]);
 
   return (
