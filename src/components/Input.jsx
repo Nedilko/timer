@@ -1,32 +1,35 @@
-import {useEffect, useState, useRef} from 'react'
-import PropTypes from 'prop-types'
+import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
 Input.propTypes = {
   label: PropTypes.string,
-  name: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
-  onChange: PropTypes.func.isRequired
-}
+  onChange: PropTypes.func.isRequired,
+};
 
-function Input({name, label, placeholder = 'Greetings text', onChange}) {
-  const refInput = useRef(null)
-  const [value, setValue] = useState()
+function Input({ value, label, placeholder = 'Greetings text', onChange }) {
+  const [textValue, setTextValue] = useState(value);
   const handleChange = (e) => {
-    setValue(refInput.current.value)
-  }
+    setTextValue(e.target.value);
+  };
 
   useEffect(() => {
-    const inputValue = {}
-    inputValue[refInput.current.name] = value
-    onChange(inputValue)
-  }, [value])
+    onChange(textValue);
+  }, [textValue, onChange]);
 
   return (
-    <label className='py-2 select-none'>{label}
-      <input ref={refInput} name={name} onChange={handleChange} className='mx-1 px-1 rounded bg-gray-200' type="text"
-             placeholder={placeholder}/>
+    <label className="py-2 select-none">
+      {label}
+      <input
+        onChange={handleChange}
+        className="mx-1 px-1 rounded bg-gray-200"
+        type="text"
+        placeholder={placeholder}
+        value={textValue}
+      />
     </label>
-  )
+  );
 }
 
-export default Input
+export default Input;

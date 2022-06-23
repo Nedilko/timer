@@ -24,10 +24,12 @@ function ThemeToggleSwitch() {
   }, [settings.theme]);
 
   return (
-    <ToggleSwitch
-      onChange={handleToggleTheme}
-      isOn={settings.theme === 'light'}
-    />
+    <div className="flex justify-center p-2">
+      <ToggleSwitch
+        onChange={handleToggleTheme}
+        isOn={settings.theme === 'light'}
+      />
+    </div>
   );
 }
 
