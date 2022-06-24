@@ -3,7 +3,7 @@ import {createPortal} from 'react-dom'
 import Panel from './Panel'
 import OverlayBackground from './OverlayBackground'
 import PropTypes from 'prop-types'
-import Button from './Button';
+import Button from './Buttons/Button';
 
 Modal.propTypes = {
   children: PropTypes.node.isRequired,
