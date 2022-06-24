@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { createContext } from 'react';
 import { loadSettings } from '../utils/storageAdapter';
+import PropTypes from 'prop-types';
 
 const SettingsContext = createContext();
 
@@ -17,5 +18,11 @@ export const SettingsContextProvider = ({ children }) => {
     </SettingsContext.Provider>
   );
 };
+
+// Если проптайпы обьявить до 8 строки линтер ругается:
+// Uncaught ReferenceError: can't access lexical declaration 'SettingsContextProvider' before initialization
+SettingsContextProvider.propTypes = {
+	children: PropTypes.node
+}
 
 export default SettingsContext;

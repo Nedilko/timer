@@ -1,17 +1,19 @@
 import {useState, useEffect, useContext} from 'react';
-import {calcDateDuration} from '../utils/dateUtils'
-import PropTypes from 'prop-types'
+import {calcDateDuration} from '../utils/dateUtils';
+import {addMinutesSeconds, formatNumberTwoDigit} from '../utils/helperFunctions';
+import PropTypes from 'prop-types';
 
 Countdown.propTypes = {
   targetDate: PropTypes.object.isRequired,
 }
 
 function Countdown({targetDate}) {
-  const [timeLeft, setTimeLeft] = useState(calcDateDuration(targetDate))
+	const fullDate = addMinutesSeconds(targetDate)
+  const [timeLeft, setTimeLeft] = useState(calcDateDuration(fullDate))
 
   useEffect(() => {
     const timerId = setTimeout(() => {
-      setTimeLeft((oldState) => calcDateDuration(targetDate))
+      setTimeLeft((oldState) => calcDateDuration(fullDate))
     }, 1000)
 
     return () => {
@@ -24,21 +26,21 @@ function Countdown({targetDate}) {
       <div
         className="after:absolute after:text-2xl after:content-[':'] after:absolute after:right-0 after:bottom-0 relative">
         <div>days</div>
-        <div className="text-2xl">{timeLeft.days.toLocaleString('en-US', {minimumIntegerDigits: 2})}</div>
+        <div className="text-2xl">{formatNumberTwoDigit(timeLeft.days)}</div>
       </div>
       <div
         className="after:absolute after:text-2xl after:content-[':'] after:absolute after:right-0 after:bottom-0 relative">
         <div>hours</div>
-        <div className="text-2xl">{timeLeft.hours.toLocaleString('en-US', {minimumIntegerDigits: 2})}</div>
+        <div className="text-2xl">{formatNumberTwoDigit(timeLeft.hours)}</div>
       </div>
       <div
         className="after:absolute after:text-2xl after:content-[':'] after:absolute after:right-0 after:bottom-0 relative">
         <div>minutes</div>
-        <div className="text-2xl">{timeLeft.minutes.toLocaleString('en-US', {minimumIntegerDigits: 2})}</div>
+        <div className="text-2xl">{formatNumberTwoDigit(timeLeft.minutes)}</div>
       </div>
       <div>
         <div>seconds</div>
-        <div className="text-2xl">{timeLeft.seconds.toLocaleString('en-US', {minimumIntegerDigits: 2})}</div>
+        <div className="text-2xl">{formatNumberTwoDigit(timeLeft.seconds)}</div>
       </div>
     </div>
   )
