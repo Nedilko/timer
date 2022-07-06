@@ -19,6 +19,7 @@ function Checkbox({ checked, label, onChange }) {
       {label}
       <input
         onChange={handleChange}
+        defaultChecked={checked}
         id="useSystemTheme"
         type="checkbox"
         value={checked}

@@ -1,8 +1,8 @@
-import settingsIcon from '../assets/settings.svg';
+import settingsIcon from '../../assets/settings.svg';
 import { useState, useContext } from 'react';
-import Icon from './Icon';
+import Icon from '../Icon';
 import SettingsModal from './SettingsModal';
-import SettingsContext from '../state/Settings';
+import SettingsContext from '../../state/Settings';
 
 const Settings = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

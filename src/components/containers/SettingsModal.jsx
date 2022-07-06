@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
-import Modal from './Modal';
-import Select from './Select';
-import Input from './Input';
-import Checkbox from './Checkbox';
-import { settingsData } from '../settings';
+import Modal from '../ui/Modals/Modal';
+import Select from '../ui/Selects/Select';
+import Input from '../ui/Inputs/Input';
+import Checkbox from '../ui/Checkboxes/Checkbox';
+import { settingsData } from '../../settings';
 import { useState } from 'react';
 
 SettingsModal.propTypes = {

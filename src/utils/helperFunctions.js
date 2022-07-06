@@ -1,21 +1,25 @@
 const applyTheme = (light) => {
   if (light) {
-    document.documentElement.classList.remove('dark');
+    document.documentElement.classList.remove("dark");
   } else {
-    document.documentElement.classList.add('dark');
+    document.documentElement.classList.add("dark");
   }
 };
 
 const addMinutesSeconds = (targetDate) => {
-	return {...targetDate, minutes: 0, seconds: 0}	
-}
+  return { ...targetDate, minutes: 0, seconds: 0 };
+};
 
 const formatNumberTwoDigit = (number) => {
-	if (number < 10) {
-		return `0${number}`
-	}
+  if (number < 10) {
+    return `0${number}`;
+  }
 
-	return number;
-}
+  return number;
+};
 
-export {applyTheme, addMinutesSeconds, formatNumberTwoDigit}
+const isSystemThemeLight = () => {
+  return window.matchMedia("(prefers-color-scheme: light)").matches;
+};
+
+export { applyTheme, addMinutesSeconds, formatNumberTwoDigit, isSystemThemeLight };

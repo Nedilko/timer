@@ -1,11 +1,18 @@
-import { useContext } from 'react';
-import SettingsContext from './state/Settings';
-import ThemeToggleSwitch from './components/ThemeToggleSwitch';
-import Countdown from './components/Countdown';
-import Settings from './components/Settings';
+import { useContext, useEffect } from "react";
+import SettingsContext from "./state/Settings";
+import ThemeToggleSwitch from "./components/containers/ThemeToggleSwitch";
+import Countdown from "./components/Countdown";
+import Settings from "./components/containers/Settings";
+import { applyTheme, isSystemThemeLight } from "./utils/helperFunctions";
 
 function App() {
   const { settings } = useContext(SettingsContext);
+
+  useEffect(() => {
+    if (settings.useSystemTheme) {
+      applyTheme(isSystemThemeLight());
+    }
+  }, [settings.useSystemTheme]);
 
   return (
     <div className="flex w-full h-screen bg-gray-200 dark:bg-gray-800 transition-colors duration-300 justify-center items-center">
