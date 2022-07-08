@@ -7,10 +7,10 @@ const bgDark = `bg-[url('./assets/dark.svg')]`;
 ToggleSwitch.propTypes = {
   isOn: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
-  isDisabled: PropTypes.bool,
+  isEnabled: PropTypes.bool,
 };
 
-function ToggleSwitch({ onChange, isOn, isDisabled }) {
+function ToggleSwitch({ onChange, isOn, isEnabled }) {
   const [toggleOn, setToggleOn] = useState(isOn);
   const handleClick = () => {
     setToggleOn((oldState) => !oldState);
@@ -24,7 +24,7 @@ function ToggleSwitch({ onChange, isOn, isDisabled }) {
       } ${
         toggleOn ? bgLight : bgDark
       } bg-[length:20px] bg-no-repeat shadow-sm ${
-        isDisabled ? "pointer-events-none grayscale" : ""
+        isEnabled ? "" : "pointer-events-none grayscale"
       }`}
     >
       <span

@@ -19,7 +19,7 @@ function ThemeToggleSwitch() {
   return (
     <div className="flex justify-center p-2">
       <ToggleSwitch
-        isDisabled={settings.useSystemTheme}
+        isEnabled={!settings.useSystemTheme}
         onChange={handleToggleTheme}
         isOn={settings.theme === "light"}
       />
