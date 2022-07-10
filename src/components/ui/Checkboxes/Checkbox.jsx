@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 Checkbox.propTypes = {
   checked: PropTypes.bool,
@@ -11,6 +11,8 @@ function Checkbox({ checked, label, onChange }) {
     onChange(e.target.checked);
   };
 
+  console.log(checked);
+
   return (
     <label
       htmlFor="useSystemTheme"
@@ -19,10 +21,9 @@ function Checkbox({ checked, label, onChange }) {
       {label}
       <input
         onChange={handleChange}
-        defaultChecked={checked}
         id="useSystemTheme"
         type="checkbox"
-        value={checked}
+        checked={checked}
         className="ml-2 w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 focus:ring-2"
       />
     </label>
