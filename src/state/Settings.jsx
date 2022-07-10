@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { createContext } from 'react';
-import { loadSettings } from '../utils/storageAdapter';
-import PropTypes from 'prop-types';
+import { useState, useEffect } from "react";
+import { createContext } from "react";
+import { loadSettings, writeSettings } from "../utils/storageAdapter";
+import PropTypes from "prop-types";
 
 const SettingsContext = createContext();
 
@@ -12,6 +12,11 @@ export const SettingsContextProvider = ({ children }) => {
       return { ...oldValue, ...data };
     });
   };
+
+  useEffect(() => {
+    writeSettings(settings);
+  }, [settings]);
+
   return (
     <SettingsContext.Provider value={{ settings, handleApply }}>
       {children}
@@ -22,7 +27,7 @@ export const SettingsContextProvider = ({ children }) => {
 // Если проптайпы обьявить до 8 строки линтер ругается:
 // Uncaught ReferenceError: can't access lexical declaration 'SettingsContextProvider' before initialization
 SettingsContextProvider.propTypes = {
-	children: PropTypes.node
-}
+  children: PropTypes.node,
+};
 
 export default SettingsContext;

@@ -1,10 +1,10 @@
-import PropTypes from 'prop-types';
-import Modal from '../ui/Modals/Modal';
-import Select from '../ui/Selects/Select';
-import Input from '../ui/Inputs/Input';
-import Checkbox from '../ui/Checkboxes/Checkbox';
-import { settingsData } from '../../settings';
-import { useState } from 'react';
+import PropTypes from "prop-types";
+import Modal from "../ui/Modals/Modal";
+import Select from "../ui/Selects/Select";
+import Input from "../ui/Inputs/Input";
+import Checkbox from "../ui/Checkboxes/Checkbox";
+import { settingsData } from "../../settings";
+import { useState } from "react";
 
 SettingsModal.propTypes = {
   onCancel: PropTypes.func.isRequired,
@@ -13,7 +13,7 @@ SettingsModal.propTypes = {
 };
 
 function SettingsModal({ settings, onCancel, onApply }) {
-  const [greetingsText, setGreetingsText] = useState('sample');
+  const [greetingsText, setGreetingsText] = useState("sample");
   const [day, setDay] = useState(settings.targetDate.days);
   const [hour, setHour] = useState(settings.targetDate.hours);
   const [useSystemTheme, setUseSystemTheme] = useState(settings.useSystemTheme);
@@ -41,14 +41,14 @@ function SettingsModal({ settings, onCancel, onApply }) {
           onChange={setDay}
           selected={day}
           options={settingsData.days}
-          label={'Day'}
+          label={"Day"}
         />
         <Select
           name="hours"
           onChange={setHour}
           selected={hour}
           options={settingsData.hours}
-          label={'Hour'}
+          label={"Hour"}
         />
         <Checkbox
           onChange={setUseSystemTheme}

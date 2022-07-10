@@ -11,6 +11,8 @@ function App() {
   useEffect(() => {
     if (settings.useSystemTheme) {
       applyTheme(isSystemThemeLight());
+    } else {
+      applyTheme(settings.theme)
     }
   }, [settings.useSystemTheme]);
 
