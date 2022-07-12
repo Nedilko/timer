@@ -11,7 +11,7 @@ function Checkbox({ checked, label, onChange }) {
     onChange(e.target.checked);
   };
 
-  return (
+ return (
     <label
       htmlFor="useSystemTheme"
       className="py-2 flex flex-row items-center select-none"

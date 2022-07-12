@@ -7,7 +7,6 @@ import { applyTheme, isSystemThemeLight } from "./utils/helperFunctions";
 
 function App() {
   const { settings } = useContext(SettingsContext);
-
   const [isFinished, setIsFinished] = useState(false);
 
   useEffect(() => {
@@ -42,6 +41,7 @@ function App() {
               )}
 
               {isFinished && <h3>{settings.greetingsText}</h3>}
+              <Countdown targetDate={settings.targetDate} />
             </div>
           </div>
         </main>
