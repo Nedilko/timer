@@ -8,15 +8,20 @@ import PropTypes from "prop-types";
 
 Countdown.propTypes = {
   targetDate: PropTypes.object.isRequired,
+  handleFinish: PropTypes.func.isRequired
 };
 
-function Countdown({ targetDate }) {
+function Countdown({ targetDate, handleFinish }) {
   const fullDate = addMinutesSeconds(targetDate);
   const [timeLeft, setTimeLeft] = useState(calcDateDuration(fullDate));
 
   useEffect(() => {
     const timerId = setTimeout(() => {
       setTimeLeft((oldState) => calcDateDuration(fullDate));
+
+      if ( timeLeft.days == 0 && timeLeft.hours == 0 && timeLeft.minutes == 0 && timeLeft.seconds == 0 ) {
+        handleFinish(true)
+      }
     }, 1000);
 
     return () => {

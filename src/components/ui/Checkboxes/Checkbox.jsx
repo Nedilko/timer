@@ -11,8 +11,6 @@ function Checkbox({ checked, label, onChange }) {
     onChange(e.target.checked);
   };
 
-  console.log(checked);
-
   return (
     <label
       htmlFor="useSystemTheme"
