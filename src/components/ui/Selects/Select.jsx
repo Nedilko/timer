@@ -17,8 +17,8 @@ function Select({ label, selected, onChange, options }) {
       {label}
       <select onChange={handleChange} className="rounded mx-1" value={selected}>
         {options.map((value, i) => (
-          <option key={i} value={i}>
-            {value}
+          <option key={i} value={value.key}>
+            {value.value}
           </option>
         ))}
       </select>
