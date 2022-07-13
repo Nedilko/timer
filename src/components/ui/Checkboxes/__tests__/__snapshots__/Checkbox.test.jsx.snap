@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox should be in the document 1`] = `
+<input
+  class="ml-2 w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 focus:ring-2"
+  id="useSystemTheme"
+  role="checkbox"
+  type="checkbox"
+/>
+`;

@@ -6,18 +6,20 @@ Checkbox.propTypes = {
   onChange: PropTypes.func.isRequired,
 };
 
-function Checkbox({ checked, label, onChange }) {
+function Checkbox({ checked = false, label, onChange }) {
   const handleChange = (e) => {
     onChange(e.target.checked);
   };
 
- return (
+  return (
     <label
+      role="label"
       htmlFor="useSystemTheme"
       className="py-2 flex flex-row items-center select-none"
     >
       {label}
       <input
+        role="checkbox"
         onChange={handleChange}
         id="useSystemTheme"
         type="checkbox"
