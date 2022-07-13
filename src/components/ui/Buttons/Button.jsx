@@ -7,7 +7,7 @@ Button.propTypes = {
 
 function Button({onClick, title}) {
   return (
-    <div className="select-none	cursor-pointer p-2 border-slate-600 rounded" onClick={onClick}>
+    <div role="button" className="select-none	cursor-pointer p-2 border-slate-600 rounded" onClick={onClick}>
       <span className='px-2'>{title}</span>
     </div>
   )
