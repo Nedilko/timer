@@ -43,14 +43,6 @@ describe("Checkbox", () => {
     expect(screen.getByRole("checkbox").checked).toBeTruthy;
   });
 
-  it("should be checked on click label", () => {
-    render(<Checkbox label="test label" onChange={clickHandler} />);
-
-    userEvent.click(screen.getByRole("label"));
-
-    expect(screen.getByRole("checkbox").checked).toBeTruthy();
-  });
-
   it("should show correct label", () => {
     render(<Checkbox label="test label" onChange={clickHandler} />);
 
