@@ -1,6 +1,6 @@
 import Button from "../Button";
 import { render, screen } from "@testing-library/react";
-import useEvent from "@testing-library/user-event";
+import userEvent from "@testing-library/user-event";
 
 describe("Button", () => {
   const clickHandler = jest.fn();
@@ -16,7 +16,7 @@ describe("Button", () => {
   it("should handle click", async () => {
     render(<Button title="test button" onClick={clickHandler} />);
 
-    await useEvent.click(screen.getByRole("button"));
+    await userEvent.click(screen.getByRole("button"));
 
     expect(clickHandler).toHaveBeenCalledTimes(1);
   });
