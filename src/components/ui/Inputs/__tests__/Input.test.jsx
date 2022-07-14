@@ -3,22 +3,22 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 describe("Input", () => {
-  const clickHandler = jest.fn();
+  const onChange = jest.fn();
   beforeEach(() => {
-    clickHandler.mockClear();
+    onChange.mockClear();
   });
 
-  it("should render", () => {
+  it("should match snapshot", () => {
     render(
       <Input
         label="test label"
         value="test value"
         placeholder="test holder"
-        onChange={clickHandler}
+        onChange={onChange}
       />
     );
 
-    expect(screen.getByRole("textbox")).toBeInTheDocument();
+    expect(screen.getByRole("textbox")).toMatchSnapshot();
   });
 
   it("should show label", () => {
@@ -27,11 +27,11 @@ describe("Input", () => {
         label="test label"
         value="test value"
         placeholder="test holder"
-        onChange={clickHandler}
+        onChange={onChange}
       />
     );
 
-    expect(screen.getByLabelText("test label")).toBeInTheDocument();
+    expect(screen.getByRole("label")).toHaveTextContent("test label");
   });
 
   it("should show value", () => {
@@ -40,11 +40,11 @@ describe("Input", () => {
         label="test label"
         value="test value"
         placeholder="test holder"
-        onChange={clickHandler}
+        onChange={onChange}
       />
     );
 
-    expect(screen.getByDisplayValue("test value")).toBeInTheDocument();
+    expect(screen.getByRole("textbox")).toHaveValue("test value");
   });
 
   it("should show placeholder", () => {
@@ -53,11 +53,11 @@ describe("Input", () => {
         label="test label"
         value="test value"
         placeholder="test holder"
-        onChange={clickHandler}
+        onChange={onChange}
       />
     );
 
-    expect(screen.getByPlaceholderText("test holder")).toBeInTheDocument();
+    expect(screen.getByRole("textbox").placeholder).toMatch("test holder");
   });
 
   it("should handle onChange", () => {
@@ -66,12 +66,12 @@ describe("Input", () => {
         label="test label"
         value="test value"
         placeholder="test holder"
-        onChange={clickHandler}
+        onChange={onChange}
       />
     );
 
     userEvent.type(screen.getByRole("textbox"), "test");
 
-    expect(clickHandler).toBeCalledTimes(5);
+    expect(onChange).toHaveBeenCalledWith("test value");
   });
 });
