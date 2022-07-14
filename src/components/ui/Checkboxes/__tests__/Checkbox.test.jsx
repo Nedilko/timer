@@ -1,6 +1,6 @@
 import Checkbox from "../Checkbox";
 import { render, screen } from "@testing-library/react";
-import useEvent from "@testing-library/user-event";
+import userEvent from "@testing-library/user-event";
 
 describe("Checkbox", () => {
   const clickHandler = jest.fn();
@@ -24,9 +24,7 @@ describe("Checkbox", () => {
   it("should be renderend unchecked by default", () => {
     render(<Checkbox label="test label" onChange={clickHandler} />);
 
-    expect(
-      screen.getByRole("checkbox", { checked: false })
-    ).toBeInTheDocument();
+    expect(screen.getByRole("checkbox").checked).toBeFalsy();
   });
 
   it("should be rendered checked", () => {
@@ -34,36 +32,28 @@ describe("Checkbox", () => {
       <Checkbox checked={true} label="test label" onChange={clickHandler} />
     );
 
-    expect(screen.getByRole("checkbox", { checked: true })).toBeInTheDocument();
+    expect(screen.getByRole("checkbox").checked).toBeTruthy();
   });
 
-  it("should be checked on click checkbox", async () => {
+  it("should be checked on click checkbox", () => {
     render(<Checkbox label="test label" onChange={clickHandler} />);
 
-    screen.debug();
+    userEvent.click(screen.getByRole("checkbox"));
 
-    expect(screen.getByRole("checkbox").checked).toEqual(false);
-
-    await useEvent.click(screen.getByRole("checkbox"));
-
-    screen.debug();
-
-    expect(screen.getByRole("checkbox").checked).toEqual(true);
+    expect(screen.getByRole("checkbox").checked).toBeTruthy;
   });
 
-  // it("should be checked on click label", () => {
-  //   render(<Checkbox label="test label" onChange={clickHandler} />);
-
-  //   useEvent.click(screen.getByRole("label"));
-
-  //   expect(screen.getByRole("checkbox")).toBeInTheDocument();
-  // });
-
-  it("should hanlde click", () => {
+  it("should be checked on click label", () => {
     render(<Checkbox label="test label" onChange={clickHandler} />);
 
-    useEvent.click(screen.getByRole("label"));
+    userEvent.click(screen.getByRole("label"));
 
-    expect(clickHandler).toHaveBeenCalledTimes(1);
+    expect(screen.getByRole("checkbox").checked).toBeTruthy();
+  });
+
+  it("should show correct label", () => {
+    render(<Checkbox label="test label" onChange={clickHandler} />);
+
+    expect(screen.getByLabelText("test label")).toBeInTheDocument();
   });
 });
