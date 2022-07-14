@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
 
 Checkbox.propTypes = {
-  checked: PropTypes.bool,
+  checked: PropTypes.bool.isRequired,
   label: PropTypes.string,
   onChange: PropTypes.func.isRequired,
 };
 
-function Checkbox({ checked = false, label, onChange }) {
+function Checkbox({ checked, label, onChange }) {
   const handleChange = (e) => {
     onChange(e.target.checked);
   };
