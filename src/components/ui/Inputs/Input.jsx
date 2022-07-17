@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 
 Input.propTypes = {
   label: PropTypes.string,
@@ -8,7 +8,7 @@ Input.propTypes = {
   onChange: PropTypes.func.isRequired,
 };
 
-function Input({ value, label, placeholder = 'Greetings text', onChange }) {
+function Input({ value, label, placeholder = "Greetings text", onChange }) {
   const [textValue, setTextValue] = useState(value);
   const handleChange = (e) => {
     setTextValue(e.target.value);
@@ -19,7 +19,7 @@ function Input({ value, label, placeholder = 'Greetings text', onChange }) {
   }, [textValue, onChange]);
 
   return (
-    <label className="py-2 select-none">
+    <label role="label" className="py-2 select-none">
       {label}
       <input
         onChange={handleChange}

@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button should be in the document 1`] = `
+<div
+  class="select-none	cursor-pointer p-2 border-slate-600 rounded"
+  role="button"
+>
+  <span
+    class="px-2"
+  >
+    test button
+  </span>
+</div>
+`;
