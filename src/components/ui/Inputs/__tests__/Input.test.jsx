@@ -21,7 +21,7 @@ describe("Input", () => {
     expect(screen.getByRole("textbox")).toMatchSnapshot();
   });
 
-  it("should show label", () => {
+  it("should have label", () => {
     render(
       <Input
         label="test label"
@@ -34,7 +34,7 @@ describe("Input", () => {
     expect(screen.getByRole("label")).toHaveTextContent("test label");
   });
 
-  it("should show value", () => {
+  it("should have value", () => {
     render(
       <Input
         label="test label"
@@ -47,7 +47,7 @@ describe("Input", () => {
     expect(screen.getByRole("textbox")).toHaveValue("test value");
   });
 
-  it("should show placeholder", () => {
+  it("should have placeholder", () => {
     render(
       <Input
         label="test label"
