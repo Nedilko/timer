@@ -2,7 +2,12 @@ import PropTypes from 'prop-types';
 
 Select.propTypes = {
   label: PropTypes.string,
-  options: PropTypes.array.isRequired,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      key: PropTypes.number,
+      name: PropTypes.string,
+    })
+  ),
   selected: PropTypes.number.isRequired,
   onChange: PropTypes.func.isRequired,
 };
