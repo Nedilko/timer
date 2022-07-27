@@ -1,4 +1,5 @@
-import PropTypes from 'prop-types';
+import { useState } from "react";
+import PropTypes from "prop-types";
 
 Select.propTypes = {
   label: PropTypes.string,
@@ -13,17 +14,27 @@ Select.propTypes = {
 };
 
 function Select({ label, selected, onChange, options }) {
+  const [value, setValue] = useState(selected);
+
+  if (!options) return false;
+
   const handleChange = (e) => {
     onChange(Number(e.target.value));
+    setValue(Number(e.target.value));
   };
 
   return (
-    <label className="py-2 select-none">
+    <label role="label" className="py-2 select-none">
       {label}
-      <select onChange={handleChange} className="rounded mx-1" value={selected}>
-        {options.map((value, i) => (
-          <option key={i} value={value.key}>
-            {value.value}
+      <select
+        role="listbox"
+        onChange={handleChange}
+        className="rounded mx-1"
+        value={value}
+      >
+        {options.map((option) => (
+          <option role="option" key={option.key} value={option.key}>
+            {option.name}
           </option>
         ))}
       </select>

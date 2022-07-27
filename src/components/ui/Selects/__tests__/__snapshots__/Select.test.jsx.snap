@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select should match snapshot 1`] = `
+<select
+  class="rounded mx-1"
+  role="listbox"
+>
+  <option
+    role="option"
+    value="1"
+  >
+    A
+  </option>
+  <option
+    role="option"
+    value="2"
+  >
+    B
+  </option>
+  <option
+    role="option"
+    value="3"
+  >
+    C
+  </option>
+</select>
+`;
