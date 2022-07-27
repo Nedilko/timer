@@ -33,15 +33,11 @@ function App() {
               <div className="py-5 text-center text-2xl uppercase">
                 time left to weekends
               </div>
-              {!isFinished && (
-                <Countdown
-                  handleFinish={setIsFinished}
-                  targetDate={settings.targetDate}
-                />
-              )}
-
               {isFinished && <h3>{settings.greetingsText}</h3>}
-              <Countdown targetDate={settings.targetDate} />
+              <Countdown
+                targetDate={settings.targetDate}
+                handleFinish={setIsFinished}
+              />
             </div>
           </div>
         </main>
