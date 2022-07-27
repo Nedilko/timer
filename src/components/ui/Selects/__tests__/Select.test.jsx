@@ -71,4 +71,12 @@ describe("Select", () => {
     expect(screen.getByRole("option", { name: "B" }).selected).toBeTruthy();
     expect(screen.getByRole("option", { name: "C" }).selected).toBeFalsy();
   });
+
+  it("should call onChange", () => {
+    render(<Select selected={1} onChange={onChange} options={options} />);
+
+    userEvent.selectOptions(screen.getByRole("listbox"), ["2"]);
+
+    expect(onChange).toBeCalledWith(2)
+  })
 });

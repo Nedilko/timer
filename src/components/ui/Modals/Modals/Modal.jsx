@@ -1,9 +1,9 @@
 import {useEffect, useRef} from 'react'
 import {createPortal} from 'react-dom'
-import Panel from './Panel'
-import OverlayBackground from './OverlayBackground'
+import Panel from '../Panels/Panel'
+import OverlayBackground from '../OverlayBackgrounds/OverlayBackground'
 import PropTypes from 'prop-types'
-import Button from '../Buttons/Button';
+import Button from '../../Buttons/Button';
 
 Modal.propTypes = {
   children: PropTypes.node.isRequired,

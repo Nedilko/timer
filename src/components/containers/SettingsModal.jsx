@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import Modal from "../ui/Modals/Modal";
+import Modal from "../ui/Modals/Modals/Modal";
 import Select from "../ui/Selects/Select";
 import Input from "../ui/Inputs/Input";
 import Checkbox from "../ui/Checkboxes/Checkbox";
