@@ -13,7 +13,7 @@ SettingsModal.propTypes = {
 };
 
 function SettingsModal({ settings, onCancel, onApply }) {
-  const [greetingsText, setGreetingsText] = useState("sample");
+  const [greetingsText, setGreetingsText] = useState(settings.greetingsText);
   const [day, setDay] = useState(settings.targetDate.days);
   const [hour, setHour] = useState(settings.targetDate.hours);
   const [useSystemTheme, setUseSystemTheme] = useState(settings.useSystemTheme);
