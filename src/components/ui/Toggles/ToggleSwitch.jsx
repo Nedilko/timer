@@ -14,8 +14,9 @@ function ToggleSwitch({ onChange, isOn, isEnabled }) {
   const [toggleOn, setToggleOn] = useState(isOn);
   const handleClick = () => {
     setToggleOn((oldState) => !oldState);
-    onChange();
+    onChange(toggleOn);
   };
+
   return (
     <span
       role="checkbox"

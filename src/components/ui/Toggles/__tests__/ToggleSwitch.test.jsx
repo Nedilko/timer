@@ -40,7 +40,7 @@ describe("ToggleSwitch", () => {
     );
   });
 
-  it("should not have bg-left class if isOn is false", () => {
+  it("should have bg-right class if isOn is false", () => {
     render(<ToggleSwitch isOn={false} isEnabled={true} onChange={onChange} />);
 
     expect(screen.getByRole("checkbox")).toHaveClass("bg-right");
@@ -56,6 +56,14 @@ describe("ToggleSwitch", () => {
 
     userEvent.click(screen.getByRole("checkbox"));
 
-    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange).toHaveBeenCalledWith(true);
+
+    userEvent.click(screen.getByRole("checkbox"));
+
+    expect(onChange).toHaveBeenCalledWith(false);
+  });
+
+  it("should handle onChange", () => {
+    render(<ToggleSwitch isEnabled={false} onChange={onChange} />);
   });
 });
