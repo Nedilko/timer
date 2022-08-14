@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal should match snapshot 1`] = `
+<header
+  class="border-b border-gray-500 text-xl py-2"
+  role="modal"
+>
+  test title
+</header>
+`;
