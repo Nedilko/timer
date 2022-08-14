@@ -3,7 +3,7 @@ import SettingsContext from "./state/Settings";
 import ThemeToggleSwitch from "./components/containers/ThemeToggleSwitch";
 import Countdown from "./components/Countdown";
 import Settings from "./components/containers/Settings";
-import { applyTheme, isSystemThemeLight } from "./utils/helperFunctions";
+import { applyTheme, getSystemTheme } from "./utils/helperFunctions";
 
 function App() {
   const { settings } = useContext(SettingsContext);
@@ -11,7 +11,7 @@ function App() {
 
   useEffect(() => {
     if (settings.useSystemTheme) {
-      applyTheme(isSystemThemeLight());
+      applyTheme(getSystemTheme());
     } else {
       applyTheme(settings.theme);
     }
