@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import SettingsContext from "./state/Settings";
 import ThemeToggleSwitch from "./components/containers/ThemeToggleSwitch";
-import Countdown from "./components/Countdown";
+import Countdown from "./components/Countdown/Countdown";
 import Settings from "./components/containers/Settings";
 import { applyTheme, getSystemTheme } from "./utils/helperFunctions";
 
