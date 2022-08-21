@@ -10,6 +10,7 @@ DialItem.propTypes = {
 function DialItem({ title, numbers, isLast }) {
   return (
     <div
+      role="dialitem"
       className={`inline-flex flex-col w-1/4 px-1 ${
         isLast
           ? ""

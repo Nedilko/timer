@@ -32,7 +32,7 @@ function Countdown({ targetDate, handleFinish }) {
   }, [timeLeft, targetDate]);
 
   return (
-    <div className="flex-row flex-wrap items-end justify-around text-center uppercase">
+    <div role="countdown" className="flex-row flex-wrap items-end justify-around text-center uppercase">
       {timeLeft.days > 0 && (
         <DialItem title="days" numbers={timeLeft.days} isLast={false}/>
       )}
