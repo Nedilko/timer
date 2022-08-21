@@ -11,7 +11,6 @@ Input.propTypes = {
 function Input({ value, label, placeholder = "Greetings text", onChange }) {
   const [textValue, setTextValue] = useState(value);
   const handleChange = (e) => {
-    console.log(e.target.value);
     setTextValue(e.target.value);
   };
 
