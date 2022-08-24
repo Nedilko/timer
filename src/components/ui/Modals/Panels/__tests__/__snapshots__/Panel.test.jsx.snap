@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Panel should match snapshot 1`] = `
+<div
+  class="bg-gray-300 rounded-xl shadow-xl p-2"
+  role="panel"
+>
+  <div>
+    1
+  </div>
+  <div>
+    2
+  </div>
+  <div>
+    3
+  </div>
+</div>
+`;

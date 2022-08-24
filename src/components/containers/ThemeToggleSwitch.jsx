@@ -3,6 +3,7 @@ import ToggleSwitch from "../ui/Toggles/ToggleSwitch";
 import SettingsContext from "../../state/Settings";
 import { applyTheme } from "../../utils/helperFunctions";
 
+// TODO: для теста рендерить ThemeToggleSwitch внутри провайдера SettingsContext
 function ThemeToggleSwitch() {
   const { settings, handleApply } = useContext(SettingsContext);
 
@@ -13,7 +14,7 @@ function ThemeToggleSwitch() {
   };
 
   useEffect(() => {
-    applyTheme(settings.theme === "light");
+    applyTheme(settings.theme);
   }, [settings.theme]);
 
   return (

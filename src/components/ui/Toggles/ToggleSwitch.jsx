@@ -14,10 +14,12 @@ function ToggleSwitch({ onChange, isOn, isEnabled }) {
   const [toggleOn, setToggleOn] = useState(isOn);
   const handleClick = () => {
     setToggleOn((oldState) => !oldState);
-    onChange();
+    onChange(toggleOn);
   };
+
   return (
     <span
+      role="checkbox"
       onClick={handleClick}
       className={`dark:bg-gray-6ex00 flex h-5 w-9 cursor-pointer appearance-none rounded-full bg-gray-100 ease-linear ${
         toggleOn ? "bg-left" : "bg-right"

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToggleSwitch should match snapshot 1`] = `
+<span
+  class="dark:bg-gray-6ex00 flex h-5 w-9 cursor-pointer appearance-none rounded-full bg-gray-100 ease-linear bg-left bg-[url('./assets/light.svg')] bg-[length:20px] bg-no-repeat shadow-sm "
+  role="checkbox"
+>
+  <span
+    class="translate-x-full m-0.5 h-4 w-4 rounded-full bg-gray-200
+transition duration-75 ease-linear dark:bg-gray-700"
+  />
+</span>
+`;

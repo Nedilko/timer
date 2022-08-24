@@ -1,12 +1,13 @@
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 
 Panel.propTypes = {
-  children: PropTypes.array,
-}
+  children: PropTypes.node,
+};
 
-function Panel({children}) {
+function Panel({ children }) {
   return (
     <div
+      role="panel"
       onClick={(e) => e.stopPropagation()}
       className="bg-gray-300 rounded-xl shadow-xl p-2"
     >
@@ -15,4 +16,4 @@ function Panel({children}) {
   );
 }
 
-export default Panel
+export default Panel;

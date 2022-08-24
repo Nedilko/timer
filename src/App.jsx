@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import SettingsContext from "./state/Settings";
 import ThemeToggleSwitch from "./components/containers/ThemeToggleSwitch";
-import Countdown from "./components/Countdown";
+import Countdown from "./components/Countdown/Countdown";
 import Settings from "./components/containers/Settings";
-import { applyTheme, isSystemThemeLight } from "./utils/helperFunctions";
+import { applyTheme, getSystemTheme } from "./utils/helperFunctions";
 
 function App() {
   const { settings } = useContext(SettingsContext);
@@ -11,7 +11,7 @@ function App() {
 
   useEffect(() => {
     if (settings.useSystemTheme) {
-      applyTheme(isSystemThemeLight());
+      applyTheme(getSystemTheme());
     } else {
       applyTheme(settings.theme);
     }
@@ -33,15 +33,11 @@ function App() {
               <div className="py-5 text-center text-2xl uppercase">
                 time left to weekends
               </div>
-              {!isFinished && (
-                <Countdown
-                  handleFinish={setIsFinished}
-                  targetDate={settings.targetDate}
-                />
-              )}
-
               {isFinished && <h3>{settings.greetingsText}</h3>}
-              <Countdown targetDate={settings.targetDate} />
+              <Countdown
+                targetDate={settings.targetDate}
+                handleFinish={setIsFinished}
+              />
             </div>
           </div>
         </main>
