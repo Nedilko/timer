@@ -13,12 +13,15 @@ const addMinutesSeconds = (targetDate) => {
 };
 
 const formatNumberTwoDigit = (number) => {
+  if (number < 0) {
+    return `00`;
+  }
+
   if (number < 10) {
-    // TODO: test 9,10,11,String
     return `0${number}`;
   }
 
-  return number;
+  return `${number}`;
 };
 
 const getSystemTheme = () => {
